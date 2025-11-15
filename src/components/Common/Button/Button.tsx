@@ -1,6 +1,11 @@
-const Button = () => {
+import type { ButtonProps } from './types/Button.interface'
+
+const Button = ({ onClick }: ButtonProps) => {
   return (
-    <button className="group rounded-full p-2 hover:bg-rose-500 transition-colors cursor-pointer">
+    <button
+      onClick={onClick}
+      className="group rounded-full p-2 hover:bg-rose-500 transition-colors cursor-pointer"
+    >
       <svg
         className="w-5 h-5 text-gray-600 group-hover:text-gray-100"
         fill="none"
