@@ -1,6 +1,7 @@
 import Button from '../Common/Button/Button.tsx'
 import Checkbox from '../Common/Checkbox/Checkbox.tsx'
 import { useTodoContext } from '../../context/TodoContext.tsx'
+
 import type { TodoItemProps } from './types/TodoItem.interface'
 
 const TodoItem = ({ todo }: TodoItemProps) => {

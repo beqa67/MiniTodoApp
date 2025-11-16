@@ -6,7 +6,7 @@ const Select = ({ value, onChange }: SelectProps) => {
     <select
       value={value}
       onChange={(e) => onChange(e.target.value as typeof value)}
-      className="w-full mb-4 px-4 py-2 rounded-xl border bg-slate-800 text-slate-100 border-slate-700 focus:border-indigo-500 focus:outline-none cursor-pointer"
+      className="w-full text-slate-100 focus:outline-none cursor-pointer bg-transparent border-b-2 border-slate-700 focus:border-indigo-500 pb-1 transition-colors"
     >
       {FILTER_OPTIONS.map((option) => (
         <option key={option.value} value={option.value}>

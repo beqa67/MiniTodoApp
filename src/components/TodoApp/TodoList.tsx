@@ -1,33 +1,26 @@
-import { useMemo } from 'react'
-
-import Select from '../Common/Select/Select.tsx'
 import { useTodoContext } from '../../context/TodoContext.tsx'
-import { TODO_FILTERS } from '../../constants/todoFilters.ts'
 
 import TodoItem from './TodoItem.tsx'
+import EmptyState from './EmptyState/EmptyState.tsx'
+import EmptyFilteredState from './EmptyFilteredState/EmptyFilteredState.tsx'
+import type { TodoListProps } from './types/TodoList.interface.ts'
 
-const TodoList = () => {
-  const { todos, filter, setFilter } = useTodoContext()
+const TodoList = ({ filteredTodos }: TodoListProps) => {
+  const { todos, filter } = useTodoContext()
 
-  const filteredTodos = useMemo(() => {
-    switch (filter) {
-      case TODO_FILTERS.COMPLETED:
-        return todos.filter((todo) => todo.completed)
-      case TODO_FILTERS.ACTIVE:
-        return todos.filter((todo) => !todo.completed)
-      case TODO_FILTERS.ALL:
-      default:
-        return todos
-    }
-  }, [todos, filter])
+  // If no todos at all, show empty state
+  if (todos.length === 0) {
+    return <EmptyState />
+  }
+
+  // If filtered todos is empty, show empty filtered state
+  if (filteredTodos.length === 0) {
+    return <EmptyFilteredState filterType={filter} />
+  }
 
   return (
     <div>
-      {todos?.length ? <Select value={filter} onChange={setFilter} /> : null}
-
-      {filteredTodos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} />
-      ))}
+      {filteredTodos.map((todo) => <TodoItem key={todo.id} todo={todo} />)}
     </div>
   )
 }
