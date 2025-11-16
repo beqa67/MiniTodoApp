@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="url(#grad)"/>
+
+  <!-- Checklist paper -->
+  <rect x="30" y="25" width="40" height="50" rx="3" fill="#ffffff"/>
+
+  <!-- Check marks -->
+  <g fill="none" stroke="#6366f1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- First check -->
+    <polyline points="35,35 38,38 43,33"/>
+    <!-- Second check -->
+    <polyline points="35,45 38,48 43,43"/>
+    <!-- Third check -->
+    <polyline points="35,55 38,58 43,53"/>
+  </g>
+
+  <!-- Lines -->
+  <g stroke="#cbd5e1" stroke-width="2" stroke-linecap="round">
+    <line x1="48" y1="35" x2="63" y2="35"/>
+    <line x1="48" y1="45" x2="63" y2="45"/>
+    <line x1="48" y1="55" x2="63" y2="55"/>
+    <line x1="35" y1="65" x2="63" y2="65" stroke="#e2e8f0"/>
+  </g>
+</svg>
