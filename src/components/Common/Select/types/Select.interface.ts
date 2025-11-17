@@ -1,6 +1,10 @@
-import type { TodoFilter } from '../../../../constants/todoFilters'
+export interface SelectOption<T = string> {
+  value: T
+  label: string
+}
 
-export interface SelectProps {
-  value: TodoFilter
-  onChange: (value: TodoFilter) => void
+export interface SelectProps<T = string> {
+  value: T
+  onChange: (value: T) => void
+  options: readonly SelectOption<T>[]
 }

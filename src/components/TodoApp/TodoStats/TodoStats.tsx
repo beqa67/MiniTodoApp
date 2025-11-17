@@ -1,6 +1,7 @@
+import type { FC } from 'react'
 import type { TodoStatsProps } from './types/TodoStats.interface'
 
-const TodoStats = ({ totalCount, filteredCount, filterType }: TodoStatsProps) => {
+const TodoStats: FC<TodoStatsProps> = ({ totalCount, filteredCount, filterType }) => {
   const getFilterLabel = () => {
     switch (filterType) {
       case 'completed':

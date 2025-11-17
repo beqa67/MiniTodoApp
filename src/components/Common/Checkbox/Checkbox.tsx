@@ -1,6 +1,7 @@
+import type { FC } from 'react'
 import type { CheckboxProps } from './types/Checkbox.interface'
 
-const Checkbox = ({ checked, onChange }: CheckboxProps) => {
+const Checkbox: FC<CheckboxProps> = ({ checked, onChange }) => {
   return (
     <input
       type="checkbox"

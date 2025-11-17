@@ -1,6 +1,7 @@
+import type { FC } from 'react'
 import type { EmptyFilteredStateProps } from './types/EmptyFilteredState.interface'
 
-const EmptyFilteredState = ({ filterType }: EmptyFilteredStateProps) => {
+const EmptyFilteredState: FC<EmptyFilteredStateProps> = ({ filterType }) => {
   const getMessage = () => {
     switch (filterType) {
       case 'completed':

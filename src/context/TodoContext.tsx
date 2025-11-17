@@ -29,7 +29,7 @@ export const TodoProvider = ({ children }: TodoProviderProps) => {
       text,
       completed: false,
     }
-    setTodos((prev) => [...prev, newTodo])
+    setTodos((prev) => [newTodo, ...prev])
   }
 
   const toggleTodo = (id: string) => {

@@ -1,15 +1,17 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 
 import Input from '../Common/Input/Input.tsx'
+import Button from '../Common/Button/Button.tsx'
 import Select from '../Common/Select/Select.tsx'
 import { useTodoContext } from '../../context/TodoContext.tsx'
-import { TODO_FILTERS } from '../../constants/todoFilters.ts'
+import { FILTER_OPTIONS, TODO_FILTERS } from '../../constants/todoFilters.ts'
 
 import TodoStats from './TodoStats/TodoStats.tsx'
 import TodoList from './TodoList.tsx'
 
 const TaskWindow = () => {
-  const { todos, filter, setFilter } = useTodoContext()
+  const [text, setText] = useState('')
+  const { todos, filter, setFilter, addTodo } = useTodoContext()
 
   const filteredTodos = useMemo(() => {
     switch (filter) {
@@ -23,15 +25,26 @@ const TaskWindow = () => {
     }
   }, [todos, filter])
 
+  const handleAddTodo = () => {
+    if (text) {
+      addTodo(text.trim())
+      setText('')
+      setFilter(TODO_FILTERS.ALL)
+    }
+  }
+
   return (
     <div className="w-full max-w-xl h-[700px] max-h-[calc(100vh-3rem)] bg-slate-900 p-6 rounded-2xl shadow-xl flex flex-col">
       <div className="space-y-6">
         <h1 className="text-2xl font-bold text-slate-100 text-center">Todo App</h1>
-        <Input />
+        <div className="flex gap-2">
+          <Input value={text} onChange={setText} onEnter={handleAddTodo} />
+          <Button onClick={handleAddTodo}>Add</Button>
+        </div>
         {todos.length > 0 && (
           <div className="flex gap-3 items-center justify-between">
             <div className="w-36">
-              <Select value={filter} onChange={setFilter} />
+              <Select value={filter} onChange={setFilter} options={FILTER_OPTIONS} />
             </div>
             <TodoStats
               totalCount={todos.length}

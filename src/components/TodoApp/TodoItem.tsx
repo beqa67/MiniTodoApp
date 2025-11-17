@@ -1,10 +1,11 @@
-import Button from '../Common/Button/Button.tsx'
+import type { FC } from 'react'
+import CloseButton from '../Common/CloseButton/CloseButton.tsx'
 import Checkbox from '../Common/Checkbox/Checkbox.tsx'
 import { useTodoContext } from '../../context/TodoContext.tsx'
 
 import type { TodoItemProps } from './types/TodoItem.interface'
 
-const TodoItem = ({ todo }: TodoItemProps) => {
+const TodoItem: FC<TodoItemProps> = ({ todo }) => {
   const { toggleTodo, deleteTodo } = useTodoContext()
 
   return (
@@ -15,7 +16,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
       >
         {todo.text}
       </span>
-      <Button onClick={() => deleteTodo(todo.id)} />
+      <CloseButton onClick={() => deleteTodo(todo.id)} />
     </div>
   )
 }
